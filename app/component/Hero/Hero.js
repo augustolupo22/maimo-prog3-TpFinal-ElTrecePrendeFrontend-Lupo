@@ -46,7 +46,7 @@ export default function Hero() {
           </h2>
 
           <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
-            El Trece Prende une la energía del streaming con la identidad de un clásico de la televisión. 
+            ElTrece Prende une la energía del streaming con la identidad de un clásico de la televisión. 
             Contenido real, cercano y en vivo. Todos los días.
           </p>
 

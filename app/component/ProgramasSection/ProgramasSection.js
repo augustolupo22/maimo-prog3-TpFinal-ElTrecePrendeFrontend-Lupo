@@ -4,7 +4,7 @@ import Link from "next/link";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
 async function getPrograms() {
-  const res = await fetch(`programs/${API_URL}`, {
+  const res = await fetch(`${API_URL}/programs`, {
     cache: "no-store",
   });
 
@@ -25,8 +25,7 @@ export default async function ProgramasSection() {
       className="w-full bg-[#bdbdbd] py-20 border-t border-black/5"
     >
       <div className="max-w-7xl mx-auto px-6">
-        
-        {/* HEADER DE LA SECCIÓN */}
+
         <div className="flex items-center justify-between mb-10">
           <div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-black tracking-tight">
@@ -45,16 +44,17 @@ export default async function ProgramasSection() {
           </Link>
         </div>
 
+        {/* GRID DE PROGRAMAS */}
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {programs.map((program) => (
             <Link
               key={program._id}
-              href={`/programas/${program._id}`}
+              href={`/programs/${program._id}`}
               className="group block bg-white rounded-2xl shadow-sm border border-black/5 
                          overflow-hidden hover:shadow-lg hover:-translate-y-1 transition"
             >
               <article>
-                
+                {/* IMAGEN */}
                 <div className="relative h-56">
                   <Image
                     src={program.imagen || "/images/program-placeholder.jpg"}
@@ -99,7 +99,6 @@ export default async function ProgramasSection() {
                     </p>
                   )}
                 </div>
-
               </article>
             </Link>
           ))}

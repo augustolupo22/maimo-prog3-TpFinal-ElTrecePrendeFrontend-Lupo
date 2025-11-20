@@ -43,7 +43,7 @@ export default function Navbar() {
 
       <div className="hidden md:flex justify-center space-x-12 py-3 bg-white/95 border-t border-black/10 text-black font-semibold tracking-wide">
         <Link href="/" className="hover:text-red-600 transition">Inicio</Link>
-        <Link href="#programas" className="hover:text-red-600 transition">Programas</Link>
+        <Link href="/programas" className="hover:text-red-600 transition">Programas</Link>
         <Link href="#equipo" className="hover:text-red-600 transition">Equipo</Link>
         <Link href="#contacto" className="hover:text-red-600 transition">Contacto</Link>
       </div>
