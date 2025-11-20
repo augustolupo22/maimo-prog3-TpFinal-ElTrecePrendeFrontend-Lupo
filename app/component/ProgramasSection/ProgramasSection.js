@@ -49,7 +49,7 @@ export default async function ProgramasSection() {
           {programs.map((program) => (
             <Link
               key={program._id}
-              href={`/programs/${program._id}`}
+              href={`/programas/${program._id}`}
               className="group block bg-white rounded-2xl shadow-sm border border-black/5 
                          overflow-hidden hover:shadow-lg hover:-translate-y-1 transition"
             >

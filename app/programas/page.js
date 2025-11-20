@@ -8,58 +8,46 @@ export default async function ProgramasPage() {
   const programs = await res.json();
 
   return (
-    <section className="w-full bg-white py-24">
+    <div className="w-full bg-[#d8d8d8] py-20">
       <div className="max-w-7xl mx-auto px-6">
-
-        <h1 className="text-5xl font-extrabold text-gray-900 mb-4">
-          Programas
-        </h1>
-        <p className="text-gray-600 text-lg mb-14">
+        <h1 className="text-4xl font-bold mb-3 text-black">Programas</h1>
+        <p className="text-black mb-10">
           Conocé la programación completa de ElTrece Prende.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14">
           {programs.map((p) => (
-            <Link
-              key={p._id}
-              href={`/programas/${p._id}`}
-              className="group"
-            >
-              <div
-                className="flex gap-7 bg-white rounded-3xl shadow-xl overflow-hidden 
-                hover:-translate-y-2 hover:shadow-2xl transition p-6 border border-black/5 group-hover:border-[#F28B00]"
-              >
-
-                <div className="relative w-[45%] min-h-[250px] rounded-2xl overflow-hidden">
+            <Link key={p._id} href={`/programas/${p._id}`} className="group">
+              <div className="flex gap-7 bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer hover:shadow-2xl transition">
+                {/* IMAGEN */}
+                <div className="relative w-1/3 h-48">
                   <Image
                     src={p.imagen}
-                    fill
                     alt={p.nombre}
-                    className="object-cover group-hover:scale-105 transition"
+                    fill
+                    className="object-cover"
                   />
                 </div>
 
-                <div className="w-[55%] flex flex-col justify-center">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#F28B00] transition">
+                {/* TEXTO */}
+                <div className="py-5 pr-5 w-2/3">
+                  <h2 className="text-xl font-bold text-gray-900 group-hover:text-[#F28B00] transition">
                     {p.nombre}
                   </h2>
 
-                  <p className="text-gray-600 text-base leading-relaxed line-clamp-3">
-                    {p.descripcion}
-                  </p>
+                  <p className="text-gray-600 text-sm mt-2">{p.descripcion}</p>
 
-                  <div className="mt-4">
-                    <span className="text-xs bg-[#F28B00] px-4 py-1 rounded-full text-black font-semibold">
-                      {p.horario}
-                    </span>
-                  </div>
+                  {p.conductores?.length > 0 && (
+                    <p className="text-xs text-gray-500 mt-3">
+                      Con {p.conductores.map((c) => c.nombre).join(", ")}
+                    </p>
+                  )}
                 </div>
               </div>
             </Link>
           ))}
         </div>
-
       </div>
-    </section>
+    </div>
   );
 }
