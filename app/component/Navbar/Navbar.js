@@ -2,77 +2,67 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaYoutube, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-md z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
+    <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md border-b border-black/10 z-50">
 
-        <Link href="/" className="flex items-center space-x-2">
+      <div className="max-w-7xl mx-auto flex items-center justify-between py-3 px-4">
+
+        <div className="hidden md:flex items-center">
+          <div className="flex items-center space-x-4 px-5 py-2 rounded-full border border-black/20">
+            <FaInstagram className="text-black text-[20px] hover:text-red-600 transition" />
+            <FaXTwitter className="text-black text-[20px] hover:text-red-600 transition" />
+            <FaYoutube className="text-black text-[20px] hover:text-red-600 transition" />
+            <FaTiktok className="text-black text-[20px] hover:text-red-600 transition" />
+          </div>
+        </div>
+
+        <Link href="/" className="flex items-center">
           <Image
             src="/images/Logo-EltrecePrende.png"
             alt="El Trece Prende"
-            width={160}
-            height={20}
+            width={170}
+            height={40}
+            className="object-contain"
           />
         </Link>
 
-        {/* NAV LINKS */}
-        <div className="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
-          <Link href="#programas" className="hover:text-[var(--color-red)]">
-            Programas
-          </Link>
-          <Link href="#envivo" className="hover:text-[var(--color-red)]">
-            En Vivo
-          </Link>
-          <Link href="#equipo" className="hover:text-[var(--color-red)]">
-            Equipo
-          </Link>
-          <Link href="#contacto" className="hover:text-[var(--color-red)]">
-            Contacto
-          </Link>
-          <Link
-            href="https://www.youtube.com/@eltrece/podcasts"
-            target="_blank"
-            className="bg-[var(--color-red)] text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 transition"
-          >
-            Ver en Vivo
-          </Link>
-        </div>
-
-        {/* MENU ICONO MOBILE */}
+        {/* Mobile icon */}
         <button
-          className="md:hidden text-gray-800 focus:outline-none"
+          className="md:hidden text-black text-2xl"
           onClick={() => setOpen(!open)}
         >
           {open ? "✕" : "☰"}
         </button>
       </div>
 
-      {/* MOBILE MENU */}
+      <div className="hidden md:flex justify-center space-x-12 py-3 bg-white/95 border-t border-black/10 text-black font-semibold tracking-wide">
+        <Link href="/" className="hover:text-red-600 transition">Inicio</Link>
+        <Link href="#programas" className="hover:text-red-600 transition">Programas</Link>
+        <Link href="#equipo" className="hover:text-red-600 transition">Equipo</Link>
+        <Link href="#contacto" className="hover:text-red-600 transition">Contacto</Link>
+      </div>
+
+      {/* --- MOBILE MENU --- */}
       {open && (
-        <div className="md:hidden bg-white shadow-lg flex flex-col items-center py-4 space-y-4">
-          <Link href="#programas" onClick={() => setOpen(false)}>
+        <div className="md:hidden bg-white border-t border-black/10 text-black flex flex-col items-center py-6 space-y-5">
+
+          <Link href="/" onClick={() => setOpen(false)} className="text-lg">
+            Inicio
+          </Link>
+          <Link href="#programas" onClick={() => setOpen(false)} className="text-lg">
             Programas
           </Link>
-          <Link href="#envivo" onClick={() => setOpen(false)}>
-            En Vivo
-          </Link>
-          <Link href="#equipo" onClick={() => setOpen(false)}>
+          <Link href="#equipo" onClick={() => setOpen(false)} className="text-lg">
             Equipo
           </Link>
-          <Link href="#contacto" onClick={() => setOpen(false)}>
+          <Link href="#contacto" onClick={() => setOpen(false)} className="text-lg">
             Contacto
-          </Link>
-          <Link
-            href="https://www.youtube.com/@eltrece/podcasts"
-            target="_blank"
-            onClick={() => setOpen(false)}
-            className="bg-[var(--color-red)] text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 transition"
-          >
-            Ver en Vivo
           </Link>
         </div>
       )}
